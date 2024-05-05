@@ -60,7 +60,7 @@ app.post('/signup',  cors(),async (req, res) => {
         } else {
             // If user doesn't exist, insert the new user data
             await LogInCollection.insertMany([data]);
-            console.log("-------!!!!!!!!! ---------");
+            console.log("-------!!!!!!!!! ----------");
 
             // Storing user onto session
             req.session.user = {
