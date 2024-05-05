@@ -28,10 +28,15 @@ const search= async(username,password,cpassword)=>{
 			})
 			.then((data) => {
 				console.log("Response data:", data);
-
+				if(data.Sesh.user){
+					console.log("In SIGN UP:", data.Sesh)
+					sessionStorage.setItem ('user', JSON.stringify(data.Sesh))
+				}else if(data.Fail){
+					console.log("failed signup:",data.Fail)
+					sessionStorage.removeItem('user', JSON.stringify(data.Sesh))
+				}
 			})
 			.catch((error) => {
-				
 				console.log("Error during fetch operation:", error );
 				// Handle fetch errors
 			});
@@ -43,5 +48,6 @@ const search= async(username,password,cpassword)=>{
 }
 
 module.exports= {
-    search
+    search,
+	
 }

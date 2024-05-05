@@ -125,7 +125,7 @@ app.post('/login',cors(), async (req, res) => {
 
 app.get('/logout', (req, res, next) => {
     // not sure if this is working yet
-    req.session.destroy((err) => {
+    req.session.destroy.save((err) => {
       if (err) {
        console.log(err)
         next(err);

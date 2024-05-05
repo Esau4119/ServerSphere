@@ -7,14 +7,16 @@ const HomePage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-
-    const handleSubmit = (event) => {
+    
+    const handleSubmit = (event)  => {
         event.preventDefault(); 
         if(username !== '' && password !== ''){
-             search(username, password, confirmPassword);
+             search(username, password, confirmPassword); 
+            var user = JSON.parse(sessionStorage.getItem('user'));
+            console.log("In Homepage",user)
         }
        
-    
+        
     };
     const handleSubmitPart2 = (event) => {
         event.preventDefault(); 
@@ -26,6 +28,7 @@ const HomePage = () => {
         event.preventDefault();
              logout();
     };
+
     return (
         <div>
             <h1>HomePage</h1>
@@ -48,12 +51,12 @@ const HomePage = () => {
         <form onSubmit={handleSubmitPart2}>
             <div>
                 <label for="username">Username:</label>
-                <input type="text" id="username" name="username" onChange={(e) => setUsername(e.target.value)}
+                <input type="text" id="username2" name="username" onChange={(e) => setUsername(e.target.value)}
                          ></input>
             </div>
             <div>
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)}
+                <input type="password" id="password2" name="password" onChange={(e) => setPassword(e.target.value)}
                          required></input>
             </div>
             <button type="submit">Login</button>

@@ -17,8 +17,8 @@ const logout = async()=>{
 				return response.json();
 			})
 			.then((data) => {
-				console.log("Response data:", data);
-
+				console.log("LOGOUT", data);
+				sessionStorage.removeItem('user', JSON.stringify(data.Sesh))
 			})
 			.catch((error) => {
 				

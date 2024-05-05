@@ -24,7 +24,15 @@ const login= async(username,password)=>{
 				return response.json();
 			})
 			.then((data) => {
-				console.log("Response data:", data);
+				if(data.Sesh.user){
+					console.log("In SIGN UP:", data.Sesh)
+					sessionStorage.setItem('user', JSON.stringify(data.Sesh))
+				}else if(data.Fail){
+					console.log("logout:", data.Sesh)
+					sessionStorage.removeItem('user', JSON.stringify(data.Sesh))
+				}
+				
+				//console.log("Response data:", data);
 			})
 			.catch((error) => {
 				console.log("Error during fetch operation:", error );
