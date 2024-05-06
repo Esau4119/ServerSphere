@@ -1,7 +1,5 @@
 const api = "http://localhost:0727/logout";
 
-//Will become Get Users or I will turn this into a dynamic running 
-// function for all queries 
 const logout = async()=>{
    
   try { 

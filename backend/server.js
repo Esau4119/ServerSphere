@@ -12,7 +12,8 @@ const router = express.Router();
 
 
 //Needed for Mongo
-const LogInCollection = require("./schem")
+const LogInCollection = require("./schemUsers")
+const MessageCollection = require("./schemMsg")
 
 // Base express
 app.use(express.urlencoded({extended: false}));
@@ -37,6 +38,57 @@ app.use(session({
         maxAge: 3600000
     }
 }));
+
+
+app.post('/messages',  cors(),async (req, res) => {
+    // Building Json out of incoming data
+    const data = {
+        name: req.body.username,
+        Message: req.body.message
+    }
+
+    // Making a call to db to see if we have a user with provided username
+    const checking = await LogInCollection.findOne({ name: req.body.username})
+    console.log("REQ:",req.body);
+    
+    try {
+        console.log("MESSAGE: ",checking);
+        // Might need to check session to see if they are logged in 
+        if (checking && checking.name === req.body.username ) {
+         
+            await MessageCollection.insertMany([data]);
+            console.log("-------MSG GOOD ----------");
+            return res.status(200).send({Success: "Message Saved"});
+        } else {
+              // If user already exists, send a message indicating that
+            console.log("--------- FAILD Msg ---------");
+            return res.status(400).send({Fail: "no"});
+        }
+    } catch (error) {
+        console.error(error);
+        // If an error occurs during signup process, return an error response
+        return res.status(500).send("Internal Server Error.");
+    }
+})
+
+app.get('/messages/recent', cors(), async (req, res) => {
+    try {
+        // Find the most recent message descending order 
+        const recentMessage = await MessageCollection.findOne().sort({ _id: -1 }).limit(1);
+        
+        if (recentMessage) {
+            // If a recent message is found send it as a response
+            return res.status(200).send(recentMessage);
+        } else {
+            // If no recent message is found send a 404 Not Found response
+            return res.status(404).send({ Fail: 'No recent messages found.' });
+        }
+    } catch (error) {
+        console.error(error);
+        // If an error occurs during the retrieval process, return an error response
+        return res.status(500).send("Internal Server Error.");
+    }
+});
 
 
 app.post('/signup',  cors(),async (req, res) => {
@@ -125,12 +177,12 @@ app.post('/login',cors(), async (req, res) => {
 
 app.get('/logout', (req, res, next) => {
     // not sure if this is working yet
-    req.session.destroy.save((err) => {
+    req.session.destroy((err) => {
       if (err) {
        console.log(err)
         next(err);
       } else {
-        console.log('RIP session has taken fall damage');
+        console.log('The factory must grow');
 
         res.clearCookie('csid');
         res.json({ status: "ok", message: "User is logged out" })

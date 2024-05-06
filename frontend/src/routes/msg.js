@@ -1,11 +1,12 @@
-const api = "http://localhost:0727/login";
+const api = "http://localhost:0727/messages";
 
-const login= async(username,password)=>{
+
+const Msg= async(username,message)=>{
    
   try { 
 		console.log("Sending over to reciever:", {
-			password: password,
-			username: username,
+            username: username,
+            message: message,
 		
 		});
 		fetch(api, {
@@ -14,7 +15,7 @@ const login= async(username,password)=>{
 				"Content-Type": "application/json",
 			},body: JSON.stringify({
 				username: username,
-				password: password,
+				message: message,
 			})
 		})
 			.then((response) => {
@@ -22,14 +23,14 @@ const login= async(username,password)=>{
 				return response.json();
 			})
 			.then((data) => {
-				if(data.Sesh.user){
-					console.log("In LOGIN:", data.Sesh)
+				if(data.Success){
+					console.log("Messages:", data)
 					sessionStorage.setItem('user', JSON.stringify(data.Sesh))
 				}else if(data.Fail){
-					console.log("failed Login:", data.Fail)
-					sessionStorage.removeItem('user', JSON.stringify(data.Sesh))
+					console.log("failed Message:", data.Fail)
 				}
 				
+		
 			})
 			.catch((error) => {
 				console.log("Error during fetch operation:", error );
@@ -42,5 +43,5 @@ const login= async(username,password)=>{
 }
 
 module.exports= {
-    login
+    Msg
 }

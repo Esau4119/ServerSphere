@@ -1,8 +1,6 @@
 const api = "http://localhost:0727/signup";
 
-//Will become Get Users or I will turn this into a dynamic running 
-// function for all queries 
-const search= async(username,password,cpassword)=>{
+const signUp= async(username,password,cpassword)=>{
    
   try { 
 		console.log("Sending over to reciever:", {
@@ -48,6 +46,6 @@ const search= async(username,password,cpassword)=>{
 }
 
 module.exports= {
-    search,
+    signUp,
 	
 }
