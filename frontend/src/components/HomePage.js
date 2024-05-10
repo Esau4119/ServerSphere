@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Msg } from '../routes/msg';
+import { Recent } from '../routes/recent';
 import { logout } from '../routes/logout';
 import { Link } from "react-router-dom";
 import Header from './Header'; 
 import '../../src/App.css';
 
 const HomePage = () => {
+    const recentMessage = Recent();
     const [username, setUsername] = useState('');
     const [msg, setMsg] = useState('');
 

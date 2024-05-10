@@ -60,7 +60,18 @@
   margin: 0 auto; /* Center the box horizontally */
 }
 
-
+#messageContainer {
+  text-align: center;
+  background-color: #ffffff; /* White background */
+  border: 2px solid #dddddd; /* Gray border */
+  border-radius: 20px; /* Rounded corners */
+  padding: 20px; 
+  /* Add padding inside the box */
+  margin-bottom: 20px; /* Add margin between boxes */
+  max-width: 600px; 
+  /* Limit the width of the box */
+  margin: 0 auto; /* Center the box horizontally */
+}
 
 
 input[type="text"],

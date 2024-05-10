@@ -31,7 +31,7 @@ const signUp= async(username,password,cpassword)=>{
 					reqData = data.Sesh
 					// storing user and switching screens
 					sessionStorage.setItem ('user', JSON.stringify(data.Sesh.user))
-					window.location.href ="/";
+					window.location.href ="login";
 				}else if(data.Fail){
 					console.log("failed signup:",data.Fail)
 					sessionStorage.removeItem('user', JSON.stringify(data.Sesh))
