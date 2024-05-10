@@ -4,6 +4,7 @@ import { login } from '../routes/login';
 import { logout } from '../routes/logout';
 import { Msg } from '../routes/msg';
 import { Recent } from '../routes/recent';
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
     const recentMessage = Recent();
@@ -12,22 +13,22 @@ const HomePage = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [msg, setMSg] = useState('');
     
-    const handleSubmit = (event)  => {
-        event.preventDefault(); 
-        if(username !== '' && password !== ''){
-             signUp(username, password, confirmPassword); 
-            var user = JSON.parse(sessionStorage.getItem('user'));
-            console.log("In Homepage",user)
-        }
+    // const handleSubmit = (event)  => {
+    //     event.preventDefault(); 
+    //     if(username !== '' && password !== ''){
+    //          signUp(username, password, confirmPassword); 
+    //         var user = JSON.parse(sessionStorage.getItem('user'));
+    //         console.log("In Homepage",user)
+    //     }
        
         
-    };
-    const handleSubmitPart2 = (event) => {
-        event.preventDefault(); 
-        if(username !== '' && password !== ''){
-             login(username, password);
-        }
-    };
+    // };
+    // const handleSubmitPart2 = (event) => {
+    //     event.preventDefault(); 
+    //     if(username !== '' && password !== ''){
+    //          login(username, password);
+    //     }
+    // };
     const handleSubmitPart3 = (event) => {
         event.preventDefault();
              logout();
@@ -43,7 +44,9 @@ const HomePage = () => {
                 {/* //////////SIGNUP////////////// */}
                 <h1>HomePage</h1>
                 <p>Hello welcome to Homepage</p>
-                <h1>Sign Up</h1>
+                <button><Link to="/login">Login</Link></button>
+                <button><Link to="/register">Register</Link></button>
+                {/* <h1>Sign Up</h1>
                 <form onSubmit={handleSubmit}>
                 <div>
                     <label for="username">Username:</label>
@@ -56,11 +59,11 @@ const HomePage = () => {
                             required></input>
                 </div>
                 <button type="submit">Sign Up</button>
-            </form>
+                </form> */}
 
             {/* ///////////LOGIN//////////////// */}
 
-            <h1>Login</h1>
+            {/* <h1>Login</h1>
             <form onSubmit={handleSubmitPart2}>
                 <div>
                     <label for="username">Username:</label>
@@ -73,7 +76,7 @@ const HomePage = () => {
                             required></input>
                 </div>
                 <button type="submit">Login</button>
-            </form>
+            </form> */}
 
             {/* ///////////SEND MSG//////////////// */}
                 <h1>Send Message</h1>
