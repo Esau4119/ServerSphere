@@ -1,7 +1,7 @@
 const api = "http://localhost:0727/login";
 
 const login= async(username,password)=>{
-   
+   var reqData;
   try { 
 		console.log("Sending over to reciever:", {
 			password: password,
@@ -23,8 +23,11 @@ const login= async(username,password)=>{
 			})
 			.then((data) => {
 				if(data.Sesh.user){
-					console.log("In LOGIN:", data.Sesh)
-					sessionStorage.setItem('user', JSON.stringify(data.Sesh))
+					console.log("ROUTE-LOGIN:", data.Sesh)
+					reqData = data.Sesh
+					sessionStorage.setItem ('user', JSON.stringify(data.Sesh.user))
+					window.location.href ="/";
+					
 				}else if(data.Fail){
 					console.log("failed Login:", data.Fail)
 					sessionStorage.removeItem('user', JSON.stringify(data.Sesh))
@@ -35,7 +38,7 @@ const login= async(username,password)=>{
 				console.log("Error during fetch operation:", error );
 			});
 	
-    return ;
+    return reqData;
  } catch(Err){
     console.log(Err);
  }

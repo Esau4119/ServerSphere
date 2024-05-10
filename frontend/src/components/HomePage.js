@@ -9,6 +9,11 @@ const HomePage = () => {
     const [username, setUsername] = useState('');
     const [msg, setMsg] = useState('');
 
+    var user = sessionStorage.getItem('user');
+    if(user){}
+    console.log(user)
+
+
     const handleSubmitPart3 = (event) => {
         event.preventDefault();
         logout();

@@ -24,7 +24,7 @@ const Msg= async(username,message)=>{
 			})
 			.then((data) => {
 				if(data.Success){
-					console.log("Messages:", data)
+					console.log("Route-Messages:", data)
 					sessionStorage.setItem('user', JSON.stringify(data.Sesh))
 				}else if(data.Fail){
 					console.log("failed Message:", data.Fail)

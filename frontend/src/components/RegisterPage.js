@@ -6,14 +6,12 @@ import '../../src/App.css';
 const RegisterPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
-
-    const handleSubmit = (event) => {
+  
+    var user ;
+    const handleSubmit = async(event) => {
         event.preventDefault();
         if (username !== '' && password !== '') {
-            signUp(username, password, confirmPassword);
-            var user = JSON.parse(sessionStorage.getItem('user'));
-            console.log("In Homepage", user);
+             user = await signUp(username, password);
         }
     };
 
