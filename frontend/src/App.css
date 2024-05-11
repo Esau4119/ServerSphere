@@ -62,6 +62,8 @@
 
 #messageContainer {
   text-align: center;
+  overflow: auto;
+  white-space: nowrap;
   background-color: #ffffff; /* White background */
   border: 2px solid #dddddd; /* Gray border */
   border-radius: 20px; /* Rounded corners */
