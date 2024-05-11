@@ -6,7 +6,7 @@ const signUp= async(username,password,cpassword)=>{
 		console.log("Sending over to reciever:", {
 			password: password,
 			username: username,
-			cpassword: cpassword
+		
 		});
 
 		fetch(api, {
@@ -16,7 +16,7 @@ const signUp= async(username,password,cpassword)=>{
 			},body: JSON.stringify({
 				username: username,
 				password: password,
-				cpassword: cpassword
+	
 			})
 		})
 			.then((response) => {
@@ -25,13 +25,13 @@ const signUp= async(username,password,cpassword)=>{
 				return response.json();
 			})
 			.then((data) => {
-				//console.log("Response data:", data);
-				if(data.Sesh.user){
-					console.log("Route-SIGN UP:", data.Sesh)
-					reqData = data.Sesh
-					// storing user and switching screens
-					sessionStorage.setItem ('user', JSON.stringify(data.Sesh.user))
+				console.log("Response data:", data);
+				if(data.Success){
 					window.location.href ="login";
+					console.log("Route-SIGN UP:", data)
+					reqData = data
+					
+					
 				}else if(data.Fail){
 					console.log("failed signup:",data.Fail)
 					sessionStorage.removeItem('user', JSON.stringify(data.Sesh))

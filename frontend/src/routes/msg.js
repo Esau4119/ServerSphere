@@ -23,9 +23,14 @@ const Msg= async(username,message)=>{
 				return response.json();
 			})
 			.then((data) => {
-				if(data.Success){
+				if(data.Success && data.Ran){
 					console.log("Route-Messages:", data)
-					sessionStorage.setItem('user', JSON.stringify(data.Sesh))
+					//Can add something to push user to sign up
+					window.location.href ="/";
+				}else if(data.Success){
+					console.log("Route-Messages:", data)
+					
+					window.location.href ="/";
 				}else if(data.Fail){
 					console.log("failed Message:", data.Fail)
 				}

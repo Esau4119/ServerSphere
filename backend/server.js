@@ -48,22 +48,21 @@ app.post('/messages',  cors(),async (req, res) => {
     }
 
     // Making a call to db to see if we have a user with provided username
-    const checking = await LogInCollection.findOne({ name: req.body.username})
+   
     console.log("REQ:",req.body);
     
     try {
-        console.log("MESSAGE: ",checking);
-        // Might need to check session to see if they are logged in 
-        if (checking && checking.name === req.body.username ) {
-         
+        
+      if(req.body.username == "RANDOM"){  // Might need to check session to see if they are logged in 
+            await MessageCollection.insertMany([data]);
+            console.log("-------MSG GOOD ----------");
+            return res.status(200).send({Success: "Message Saved", Ran: "non user"});
+        }else{
             await MessageCollection.insertMany([data]);
             console.log("-------MSG GOOD ----------");
             return res.status(200).send({Success: "Message Saved"});
-        } else {
-              // If user already exists, send a message indicating that
-            console.log("--------- FAILD Msg ---------");
-            return res.status(400).send({Fail: "no"});
         }
+  
     } catch (error) {
         console.error(error);
         // If an error occurs during signup process, return an error response
@@ -114,17 +113,7 @@ app.post('/signup',  cors(),async (req, res) => {
             await LogInCollection.insertMany([data]);
             console.log("-------!!!!!!!!! ----------");
 
-            // Storing user onto session
-            req.session.user = {
-                name: req.body.username
-            }
-            req.session.save(err => {
-                if(err){
-                    console.log(err);
-                }
-            });
-
-            return res.status(200).send({Success: "User created successfully.",Sesh: req.session});
+             return res.status(210).send({Success: "Bros ight"})
         }
 
     } catch (error) {
@@ -161,7 +150,7 @@ app.post('/login',cors(), async (req, res) => {
                     console.log(err);
                 }
             });
-            return res.status(210).send({Success: "Bros ight",Sesh: req.session})
+            return res.status(210).send({Success: "Bros ight",Sesh: req.session.user.name})
         }
         else {
             // Failed login

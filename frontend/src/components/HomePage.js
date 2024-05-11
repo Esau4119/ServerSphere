@@ -11,10 +11,25 @@ const HomePage = () => {
     const [username, setUsername] = useState('');
     const [msg, setMsg] = useState('');
 
-    var user = sessionStorage.getItem('user');
-    if(user){}
-    console.log(user)
+    var user;
+    
+    if (sessionStorage.getItem('user')) {
+        user = sessionStorage.getItem('user')
+    }
 
+
+    // Function to set value based on session presence
+    function setValue() {
+        var input = document.getElementById('username3');
+        if (user == null || user == undefined) {
+            input.innerHTML = 'RANDOM';
+        } else {
+            input.innerHTML = user;
+        }
+    }
+
+    // Call the function when the page loads
+    window.onload = setValue;
 
     const handleSubmitPart3 = (event) => {
         event.preventDefault();
@@ -22,9 +37,11 @@ const HomePage = () => {
     };
 
     const handleSubmitPart4 = (event) => {
-        event.preventDefault(); 
-        if (username !== '' && msg !== '') {
-            Msg(username, msg);
+        event.preventDefault();
+        if (user == null || user == 'undefined') {
+            Msg("RANDOM", msg)
+        } else {
+            Msg(user, msg);
         }
     };
 
@@ -40,10 +57,10 @@ const HomePage = () => {
                     <h1>Send Message</h1>
                     <form onSubmit={handleSubmitPart4}>
                         <label htmlFor="username">Username:</label>
-                        <input type="text" id="username3" name="username" onChange={(e) => setUsername(e.target.value)} required />
+                        <div type="text" id="username3" ></div>
                         <br />
                         <label htmlFor="message">Message:</label>
-                        <textarea id="message" name="message" rows="2" onChange={(e) => setMsg(e.target.value)} required></textarea>
+                        <textarea id="message" name="message" rows="2" onChange={(e) =>{ setMsg(e.target.value)}} required></textarea>
                         <br />
                         <button className='sendbtn' type="submit">ENTER</button>
                         

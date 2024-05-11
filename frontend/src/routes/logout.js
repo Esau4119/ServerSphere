@@ -17,6 +17,7 @@ const logout = async()=>{
 			.then((data) => {
 				console.log("LOGOUT", data);
 				sessionStorage.removeItem('user', JSON.stringify(data.Sesh))
+				window.location.href ="/";
 			})
 			.catch((error) => {
 				

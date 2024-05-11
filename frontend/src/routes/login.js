@@ -22,10 +22,11 @@ const login= async(username,password)=>{
 				return response.json();
 			})
 			.then((data) => {
-				if(data.Sesh.user){
+				console.log(data)
+				if(data.Success){
 					console.log("ROUTE-LOGIN:", data.Sesh)
 					reqData = data.Sesh
-					sessionStorage.setItem ('user', JSON.stringify(data.Sesh.user))
+					sessionStorage.setItem ('user', data.Sesh)
 					window.location.href ="/";
 					
 				}else if(data.Fail){
