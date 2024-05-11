@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Msg } from '../routes/msg';
 import { Recent } from '../routes/recent';
-import { logout } from '../routes/logout';
 import { Link } from "react-router-dom";
 import Header from './Header'; 
 import '../../src/App.css';
@@ -10,13 +9,11 @@ const HomePage = () => {
     const recentMessage = Recent();
     const [username, setUsername] = useState('');
     const [msg, setMsg] = useState('');
-
-    var user;
     
+    var user;
     if (sessionStorage.getItem('user')) {
         user = sessionStorage.getItem('user')
     }
-
 
     // Function to set value based on session presence
     function setValue() {
@@ -30,11 +27,6 @@ const HomePage = () => {
 
     // Call the function when the page loads
     window.onload = setValue;
-
-    const handleSubmitPart3 = (event) => {
-        event.preventDefault();
-        logout();
-    };
 
     const handleSubmitPart4 = (event) => {
         event.preventDefault();
@@ -51,7 +43,6 @@ const HomePage = () => {
             <div className='pagecontent'>
                 <h1>HomePage</h1>
                 <p>Hello, welcome to Homepage</p>
-
                 {/* Send Message */}
                 <div className='page1'>
                     <h1>Send Message</h1>
@@ -66,10 +57,6 @@ const HomePage = () => {
                         
                     </form>
                     <br/>
-                    {/* Logout */}
-                    <form onSubmit={handleSubmitPart3}>
-                        <button className='sendbtn' type="submit">LogOut</button>
-                    </form>
                 </div>
             </div>
 
