@@ -7,9 +7,14 @@ After Cloning,
 # How to Run
 
 Make sure to have:
-  2 terminals 
-    one in backend 
-    one in frontend
+
+  2 terminals
+
+  One in Backend 
+
+  One in Frontend
+  
 Then Just:
+
   Npm Start Both
     
