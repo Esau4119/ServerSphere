@@ -1,0 +1,133 @@
+.wholepage {
+  background-image: url('./bgimg.png'); /* Background image */
+  background-size: cover; /* Ensure the background image covers the entire container */
+  background-repeat: no-repeat; /* Prevent the background image from repeating */
+  background-position: center; /* Center the background image */
+}
+
+.container {
+  margin:0px;
+}
+
+.header {
+  display: flex;
+  align-items: center; /* Align items vertically in the flex container */
+ 
+}
+
+.header h1 {
+  margin-right: auto; /* Push h1 to the left */
+  
+}
+
+.navbar {
+  display: flex;
+  justify-content: center; /* Center the buttons horizontally */
+  padding: 20px;
+}
+
+.button {
+  padding: 22px 24px; 
+  color:black; 
+  background-color: transparent;
+  text-decoration:none;
+  border: none; 
+  border-radius: 5px;
+  font-size: 18px; 
+  cursor: pointer;
+  font-weight:bold;
+  transition: background-color 0.3s ease;
+
+}
+
+.button:hover {
+  background-color: #ccc; 
+  transition: background-color 0.90s ease; /* Adjust the duration for a smoother transition */
+
+}
+
+.pagecontent {
+  text-align: center; /* Center the text horizontally */
+}
+
+.pagecontent .page1 {
+  background-color: #ffffff; /* White background */
+  border: 2px solid #dddddd; /* Gray border */
+  border-radius: 20px; /* Rounded corners */
+  padding: 20px; /* Add padding inside the box */
+  margin-bottom: 20px; /* Add margin between boxes */
+  max-width: 600px; /* Limit the width of the box */
+  margin: 0 auto; /* Center the box horizontally */
+}
+
+#messageContainer {
+  text-align: center;
+  overflow: auto;
+  white-space: nowrap;
+  background-color: #ffffff; /* White background */
+  border: 2px solid #dddddd; /* Gray border */
+  border-radius: 20px; /* Rounded corners */
+  padding: 20px; 
+  /* Add padding inside the box */
+  margin-bottom: 20px; /* Add margin between boxes */
+  max-width: 600px; 
+  /* Limit the width of the box */
+  margin: 0 auto; /* Center the box horizontally */
+}
+
+#username3 {
+  text-align: center;
+  background-color: #ffffff; /* White background */
+  border: 2px solid #dddddd; /* Gray border */
+  border-radius: 20px; /* Rounded corners */
+  padding: 20px; 
+  /* Add padding inside the box */
+  margin-bottom: 20px; /* Add margin between boxes */
+  max-width: 600px; 
+  /* Limit the width of the box */
+  margin: 0 auto; /* Center the box horizontally */
+}
+input[type="text"],
+input[type="password"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical; /* Allow vertical resizing */
+}
+
+label {
+  font-weight: bold;
+}
+.sendbtn {
+  padding: 12px 20px;
+  background-color: #07090b;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+ 
+}
+
+.sendbtn:hover {
+  background-color: #2a1057;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  color:#00A0C6; 
+  text-decoration:none; 
+  cursor:pointer;  
+}

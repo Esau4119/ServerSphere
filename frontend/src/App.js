@@ -2,7 +2,12 @@ import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import HomePage from './components/HomePage'
+const mongoose = require("mongoose");
+const url = process.env.URL; 
+
+
 function App() {
+  console.log(url)
   return (
     <div className="App">
       <HomePage />
