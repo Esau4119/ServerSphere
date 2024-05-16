@@ -3,18 +3,18 @@ CSC 651 Project
 Recent Message App 
 Using MongoDB, Express, React, and Node
 
-After Cloning,
+After Cloning:
 # How to Run
 
 Make sure to have:
 
-  2 terminals
+- 2 terminals
 
-  One in Backend 
+  - One for Backend 
 
-  One in Frontend
+  - One for Frontend
   
-Then Just:
+Then, for both terminals:
 
-  Npm Start Both
+- npm start (for both)
     
